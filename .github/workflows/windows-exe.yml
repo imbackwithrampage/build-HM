@@ -14,18 +14,18 @@ jobs:
           flutter-version: '3.24.2'
           
       - name: Clone project
-        run: git clone https://github.com/imbackwithrampage/WormHole.git
+        run: git clone https://github.com/anandnet/Harmony-Music.git
 
       - name: Update lang data
-        working-directory: ./WormHole
+        working-directory: ./Harmony-Music
         run: dart localization/generator.dart
 
       - name: Set update check flag to true
-        working-directory: ./WormHole/lib/utils
+        working-directory: ./Harmony-Music/lib/utils
         run: echo "const updateCheckFlag = true;" > update_check_flag_file.dart
         
       - name: Build windows exe package
-        working-directory: ./WormHole
+        working-directory: ./Harmony-Music
         run: |
           flutter clean
           dart pub global activate flutter_distributor
@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: WormHole windows exe
-          path: ./WormHole/dist/*
+          path: ./Harmony-Music/dist/*
